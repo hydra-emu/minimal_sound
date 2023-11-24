@@ -1,0 +1,25 @@
+name: Build MacOS
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: 'true'
+    - name: configure
+      run: cmake -B build
+    - name: make
+      run: cmake --build build
+    - uses: actions/upload-artifact@v3
+      with:
+        name: minimal_sound
+        path: build/libminimal_sound.dylib

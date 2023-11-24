@@ -1,0 +1,5 @@
+project(minimal_sound)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_library(minimal_sound SHARED core.cxx)
+target_include_directories(minimal_sound PRIVATE core/include)
